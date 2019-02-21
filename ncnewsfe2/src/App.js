@@ -4,6 +4,7 @@ import './App.css';
 
 import { Nav } from './components/Nav.jsx';
 import Articles from './components/Articles';
+import Article from './components/Article';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
         <Router>
           <Home path="/" />
           <Articles path="/articles" />
+          <Article path="/articles/:article_id" />
         </Router>
       </div>
     );

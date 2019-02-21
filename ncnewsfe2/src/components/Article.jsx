@@ -10,8 +10,10 @@ class singleArticle extends Component {
     return (
       <div>
         <h1>{this.state.article.title}</h1>
-        <h2>Topic : {this.state.article.title}</h2>
-        <h2>Body : {this.state.article.body}</h2>
+        <h2>Topic : {this.state.article.topic}</h2>
+        <h2>Author: {this.state.article.author}</h2>
+        <h3>Body : {this.state.article.body}</h3>
+        <h3>Date: {`${this.state.article.created_at}`.slice(0, 10)}</h3>
       </div>
     );
   }
