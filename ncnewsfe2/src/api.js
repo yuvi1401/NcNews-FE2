@@ -23,3 +23,9 @@ export const getSortedArticles = criteria => {
       return data.articles;
     });
 };
+
+export const changeVoteOnArticle = (articleId, voteChangeNum) => {
+  return axios.patch(`${BASE_URL}/articles/${articleId}`, {
+    inc_votes: `${voteChangeNum}`
+  });
+};
