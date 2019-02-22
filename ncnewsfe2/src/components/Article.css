@@ -5,6 +5,18 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 /* .button-area {
   margin: 10px auto;
   display: flex;
@@ -13,3 +25,13 @@
   flex-wrap: wrap;
   max-width: 320px;
 } */
+#article_body {
+  font-size: 1.5em;
+}
+#textboxid {
+  height: 100px;
+  width: 500px;
+  background-color: rgb(207, 213, 144);
+  margin: auto;
+  display: block;
+}
