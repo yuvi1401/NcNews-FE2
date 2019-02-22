@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Article.css';
 import { Nav } from './Nav';
 import { getArticleData } from '../api';
 
@@ -8,7 +9,10 @@ class singleArticle extends Component {
   };
   render() {
     return (
-      <div>
+      <div
+        className="articleDataStyle"
+        style={{ backgroundColor: 'steelblue' }}
+      >
         <h1>{this.state.article.title}</h1>
         <h2>Topic : {this.state.article.topic}</h2>
         <h2>Author: {this.state.article.author}</h2>

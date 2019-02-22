@@ -1,6 +1,6 @@
 import React from 'react';
 import './Articles.css';
-import { getArticlesData } from '../api';
+import { getArticlesData, getSortedArticles } from '../api';
 
 import { Link, Router } from '@reach/router';
 
@@ -14,6 +14,20 @@ class Articles extends React.Component {
     if (isLoading) return <h3>Loading...</h3>;
     return (
       <React.Fragment>
+        <div>
+          <h3>Sort Articles by</h3>
+          <ul>
+            <button value="comment_count" onClick={this.handleChangeSort}>
+              Comment Count
+            </button>
+            <button value="created_at" onClick={this.handleChangeSort}>
+              Date Created
+            </button>
+            <button value="votes" onClick={this.handleChangeSort}>
+              Votes
+            </button>
+          </ul>
+        </div>
         <div className="articlesStyle">
           {articlesData.map(article => {
             return (
@@ -59,5 +73,15 @@ class Articles extends React.Component {
       //console.log(this.state.articlesData);
     });
   }
+  handleChangeSort = event => {
+    console.log(event);
+    const { value } = event.target;
+    getSortedArticles(value).then(articles => {
+      this.setState({
+        articlesData: articles,
+        isLoading: false
+      });
+    });
+  };
 }
 export default Articles;
