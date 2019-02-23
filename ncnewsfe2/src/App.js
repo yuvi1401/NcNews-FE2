@@ -3,15 +3,25 @@ import { Link, Router } from '@reach/router';
 import './App.css';
 
 import { Nav } from './components/Nav.jsx';
+import Auth from './components/Auth';
 import Articles from './components/Articles';
 import Article from './components/Article';
 
 class App extends Component {
+  state = {
+    user: null
+  };
+
   render() {
     return (
       <div className="App">
         <h1> News App </h1>
         <Nav />
+        <Auth>
+          login={this.setUser}
+          logout={this.clearUser}
+          user={this.state.user}
+        </Auth>
         <Router>
           <Home path="/" />
           <Articles path="/articles" />
@@ -21,11 +31,7 @@ class App extends Component {
     );
   }
 }
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
-);
+const Home = () => <div />;
 // const Articles = () => <div />;
 
 export default App;
