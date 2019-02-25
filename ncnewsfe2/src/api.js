@@ -29,3 +29,18 @@ export const changeVoteOnArticle = (articleId, voteChangeNum) => {
     inc_votes: `${voteChangeNum}`
   });
 };
+// export const getUserForLogin = username => {
+//   return axios.get(`${BASE_URL}/api/users/${username}`);
+// };
+
+export const getUser = username => {
+  return axios.get(`${BASE_URL}/users`).then(data => {
+    // console.log(data.data.users);
+
+    const newData = data.data.users.filter(
+      user => user.username === `${username}`
+    );
+    console.log(newData);
+    return newData[0];
+  });
+};

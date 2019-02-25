@@ -1,0 +1,9 @@
+.usercard {
+  background: var(--card-colour);
+  flex-basis: 20vw;
+  margin: 15px;
+  padding: 15px;
+  border: 3px solid var(--border-colour);
+  border-radius: 15px;
+  box-shadow: 5px 5px var(--border-colour);
+}
