@@ -24,9 +24,9 @@ export const getSortedArticles = criteria => {
     });
 };
 
-export const changeVoteOnArticle = (articleId, voteChangeNum) => {
+export const changeVoteOnArticle = (articleId, voteNum) => {
   return axios.patch(`${BASE_URL}/articles/${articleId}`, {
-    inc_votes: `${voteChangeNum}`
+    inc_votes: `${voteNum}`
   });
 };
 // export const getUserForLogin = username => {
@@ -43,4 +43,12 @@ export const getUser = username => {
     console.log(newData);
     return newData[0];
   });
+};
+
+export const getCommnetsForArticleId = articleId => {
+  return axios
+    .get(`${BASE_URL}/articles/${articleId}/comments`)
+    .then(({ data }) => {
+      return data.comments;
+    });
 };

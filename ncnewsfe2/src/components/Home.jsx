@@ -7,8 +7,12 @@ class Home extends React.Component {
     console.log(this.props);
 
     return (
-      <div className="homepage">
-        <h3>Welcome to NC News {`${username}`} </h3>
+      <div className="container">
+        <div className="grid-row">
+          <h1>Welcome to NC News </h1>
+
+          <h2>{`${username}`} </h2>
+        </div>
       </div>
     );
   }

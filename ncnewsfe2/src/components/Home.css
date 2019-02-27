@@ -1,4 +1,13 @@
-.homepage {
-  background-image: url('https://communications.uci.edu/img/buckets/press-releases.png')
-    no-repeat center center fixed;
+.container {
+  max-width: 700px;
+  height: 250px;
+  margin: auto;
+  justify-content: center;
+  align-content: center;
+  background-color: #00ffdec2;
+}
+.grid-row {
+  padding: auto;
+  align-content: center;
+  height: 100%;
 }
