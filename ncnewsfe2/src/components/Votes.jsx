@@ -35,7 +35,7 @@ class Votes extends Component {
     changeVoteOnArticle(articleId, voteNum).then(data => {
       //console.log(data);
       this.setState(state => {
-        return { voteChange: voteNum };
+        return { voteChange: state.voteChange + voteNum };
       });
     });
   };

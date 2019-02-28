@@ -19,7 +19,7 @@ class Main extends React.Component {
       <Router className="main">
         <Home path="/" username={user.username} />
         <Articles path="/articles" />
-        <Article path="/articles/:article_id" />
+        <Article path="/articles/:article_id" username={user.username} />
         {/* <Articles path="/topics/:topic" user={user} />
         <ArticlePage path="/articles/:article_id" user={user} />
         <Topics path="/topics" /> */}

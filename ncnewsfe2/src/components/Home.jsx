@@ -4,7 +4,7 @@ import './Home.css';
 class Home extends React.Component {
   render() {
     const { username } = this.props;
-    console.log(this.props);
+    //console.log(this.props);
 
     return (
       <div className="container">

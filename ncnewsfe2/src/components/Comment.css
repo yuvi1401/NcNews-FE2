@@ -1,0 +1,20 @@
+.comment {
+  width: 500px;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: bisque;
+}
+.commentHeader {
+  text-decoration-color: blue;
+}
+
+#body {
+  height: 100px;
+  width: 500px;
+  background-color: rgb(207, 213, 144);
+  margin: auto;
+  display: block;
+  font-size: 1em;
+}

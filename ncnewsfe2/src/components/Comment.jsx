@@ -2,51 +2,72 @@ import React, { Component } from 'react';
 
 import { Link, Router } from '@reach/router';
 import moment from 'moment';
-import { getCommentsForArticleId } from './api';
+import { getCommnetsForArticleId, postComment } from '../api';
+import './Comment.css';
+
 class Comments extends Component {
   state = {
     comments: [],
-    isLoading: false
+    isLoading: false,
+    body: ''
   };
+
   render() {
     const { username } = this.props;
-    const { comments } = this.state;
+    console.log(username);
+    const { comments, body } = this.state;
     return (
       <div>
         <h2>Add Comment</h2>
-        <input type="text" placeholder="add comment" id="textboxid" />
-        <div>
-          <button className="button">post</button>
-        </div>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            id="body"
+            value={body}
+            onChange={this.handleChange}
+            placeholder="COMMENT"
+            className="textarea"
+            // maxlength={200}
+            required
+          />
+          <div>
+            <button className="button">post</button>
+          </div>
+        </form>
+        <div />
+
         <h2>Comments</h2>
         {comments.length > 0 &&
-          comments.map(comment => (
-            <article key={comment.comment_id} className="comment">
-              <section className="comment__header">
-                {comment.author} | {moment(comment.created_at).fromNow()} |
-                {username === comment.author && (
-                  <button
-                    className="button button--delete"
-                    onClick={() => this.handleDelete(comment.comment_id)}
-                  >
-                    Delete
-                  </button>
-                )}
-                {/* <Voting
-                  votes={parseInt(comment.votes)}
-                  id={articleData.article_id}
-                  commentId={comment.comment_id}
-                  type={'comment'}
-                /> */}
-              </section>
-              <section className="comment__body">{comment.body}</section>
-            </article>
-          ))}
+          comments.map(comment => {
+            return (
+              <article key={comment.comment_id} className="comment">
+                <h4 className="commentHeader">
+                  {comment.author} | {moment(comment.created_at).fromNow()} |
+                  {username === comment.author && (
+                    <button
+                      className="button button--delete"
+                      onClick={() => this.handleDelete(comment.comment_id)}
+                    >
+                      Delete
+                    </button>
+                  )}
+                  {/* <Voting
+              votes={parseInt(comment.votes)}
+              id={articleData.article_id}
+              commentId={comment.comment_id}
+              type={'comment'}
+            /> */}
+                </h4>
+                <section className="comment__body">{comment.body}</section>
+              </article>
+            );
+          })}
       </div>
     );
   }
   componentDidMount() {
-    getCommentsForArticleId().then(comments => {
+    const { articleId } = this.props;
+    getCommnetsForArticleId(articleId).then(comments => {
       this.setState({
         comments: comments,
         isLoading: true
@@ -54,5 +75,27 @@ class Comments extends Component {
       //console.log(this.state.articlesData);
     });
   }
+  handleChange = event => {
+    this.setState({
+      body: event.target.value
+    });
+    // const { id, value } = event.target;
+    // this.setState(() => ({
+    //   [id]: value,
+    // }));
+  };
+  handleSubmit = event => {
+    event.preventDefault();
+    const { body } = this.state;
+    const { user, articleId } = this.props;
+    console.log(this.props);
+    console.log(this.props.children);
+    postComment(articleId, { body }).then(comment => {
+      this.setState({ body: '' }, () => {
+        getCommnetsForArticleId(articleId);
+      });
+    });
+  };
 }
+
 export default Comments;

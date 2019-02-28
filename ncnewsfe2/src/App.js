@@ -31,7 +31,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1> News App </h1>
-        <Nav user={user} />
+        <Nav username={user.username} />
         {hasError ? (
           <h2>Can't load articles</h2>
         ) : (

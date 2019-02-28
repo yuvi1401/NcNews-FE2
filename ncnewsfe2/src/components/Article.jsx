@@ -3,14 +3,15 @@ import './Article.css';
 import { Nav } from './Nav';
 import { getArticleData, changeVoteOnArticle } from '../api';
 import Votes from './Votes.jsx';
+import Comments from './Comment.jsx';
+import moment from 'moment';
 
 class singleArticle extends Component {
   state = {
     article: {}
-
-    // voteChange: 0
   };
   render() {
+    const { username } = this.props;
     const { article } = this.state;
     return (
       <div
@@ -23,53 +24,19 @@ class singleArticle extends Component {
         </h2>
         {/* <h2>Author: {article.author}</h2> */}
         <p id="article_body">{article.body}</p>
-        <p>Date: {`${article.created_at}`.slice(0, 10)}</p>
+        <p>Date: {moment(article.created_at).fromNow()}</p>
         <Votes articleId={article.article_id} articleVotes={article.votes} />
-        {/* <div>
-          <button
-            className="button"
-            onClick={() => this.handleVoteChange(1)}
-            disabled={voteChange === 1}
-          >
-            Vote Up
-          </button>
-          
-          <p>Votes: {`${voteChange}`}</p>
-          <button
-            className="button"
-            onClick={() => this.handleVoteChange(-1)}
-            disabled={voteChange === -1}
-          >
-            Vote Down
-          </button>
-        </div> */}
-        <h2>Add Comment</h2>
-        <input type="text" placeholder="add comment" id="textboxid" />
-        <div>
-          <button className="button">post</button>
-        </div>
-        <h2>Comments</h2>
+
+        <Comments articleId={this.props.article_id} username={username} />
       </div>
     );
   }
-  componentDidMount() {
-    getArticleData(this.props.article_id).then(article => {
-      this.setState({
-        article
-      });
+
+  articleData = getArticleData(this.props.article_id).then(article => {
+    this.setState({
+      article
     });
-  }
-  // handleVoteChange(voteChangeNum) {
-  //   const articleId = this.props.article_id;
-  //   //console.log(this.props.article_id);
-  //   //console.log(articleId);
-  //   changeVoteOnArticle(articleId, voteChangeNum).then(() => {
-  //     this.setState(state => {
-  //       return { voteChange: state.article.votes + voteChangeNum };
-  //     });
-  //     console.log(this.state);
-  //   });
-  // }
+  });
 }
 
 export default singleArticle;

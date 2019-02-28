@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const BASE_URL = 'https://bencknews.herokuapp.com/api';
 export const getArticlesData = () => {
-  return axios.get(`${BASE_URL}/articles`).then(({ data }) => {
+  return axios.get(`${BASE_URL}/articles?limit=100000`).then(({ data }) => {
     // console.log(data);
     return data.articles;
   });
@@ -47,7 +47,16 @@ export const getUser = username => {
 
 export const getCommnetsForArticleId = articleId => {
   return axios
-    .get(`${BASE_URL}/articles/${articleId}/comments`)
+    .get(`${BASE_URL}/articles/${articleId}/comments?limit=10000`)
+    .then(({ data }) => {
+      // console.log(data.comments);
+      // console.log(articleId);
+      return data.comments;
+    });
+};
+export const postComment = (article_id, newComment) => {
+  return axios
+    .post(`${BASE_URL}/articles/${article_id}/comments`, newComment)
     .then(({ data }) => {
       return data.comments;
     });

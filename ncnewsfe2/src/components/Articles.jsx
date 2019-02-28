@@ -3,7 +3,7 @@ import './Articles.css';
 import { getArticlesData, getSortedArticles } from '../api';
 
 import { Link, Router } from '@reach/router';
-
+import moment from 'moment';
 class Articles extends React.Component {
   state = {
     articlesData: [],
@@ -28,6 +28,7 @@ class Articles extends React.Component {
             </button>
           </ul>
         </div>
+        <p>Total articles count = {`${articlesData.length}`}</p>
         <div className="articlesStyle">
           {articlesData.map(article => {
             return (
@@ -53,7 +54,7 @@ class Articles extends React.Component {
                     Votes:{article.votes} {'  |  '} Topic: {article.topic}{' '}
                     {' | '} Comment Counts: {article.comment_count}
                   </h3>
-                  <h3>Added On: {`${article.created_at}`.slice(0, 10)}</h3>
+                  <h3>Added On: {moment(article.created_at).fromNow()}</h3>
                 </Link>
               </div>
 

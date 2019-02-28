@@ -4,11 +4,11 @@ import './Nav.css';
 
 class Nav extends Component {
   render() {
-    const { user } = this.props;
-    console.log(user);
+    const { username } = this.props;
+    console.log(username);
     return (
       <div className="topNav">
-        {user.username ? (
+        {username ? (
           <nav className="link">
             <Link to="/">Home</Link>
             {'  |  '}
