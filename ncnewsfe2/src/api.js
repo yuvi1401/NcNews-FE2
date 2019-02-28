@@ -58,6 +58,17 @@ export const postComment = (article_id, newComment) => {
   return axios
     .post(`${BASE_URL}/articles/${article_id}/comments`, newComment)
     .then(({ data }) => {
-      return data.comments;
+      console.log(data);
+
+      return data.comment;
+    });
+};
+
+export const deleteComment = async (articleId, commentId) => {
+  return axios
+    .delete(`${BASE_URL}/articles/${articleId}/comments/${commentId}`)
+    .then(({ data }) => {
+      console.log(data);
+      return data;
     });
 };

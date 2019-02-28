@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Link, Router } from '@reach/router';
 import moment from 'moment';
-import { getCommnetsForArticleId, postComment } from '../api';
+import { getCommnetsForArticleId, postComment, deleteComment } from '../api';
 import './Comment.css';
 
 class Comments extends Component {
@@ -14,7 +14,7 @@ class Comments extends Component {
 
   render() {
     const { username } = this.props;
-    console.log(username);
+    //console.log(username);
     const { comments, body } = this.state;
     return (
       <div>
@@ -76,24 +76,36 @@ class Comments extends Component {
     });
   }
   handleChange = event => {
-    this.setState({
-      body: event.target.value
-    });
-    // const { id, value } = event.target;
-    // this.setState(() => ({
-    //   [id]: value,
-    // }));
+    // this.setState({
+    //   body: event.target.value
+    // });
+    const { id, value } = event.target;
+    this.setState(() => ({
+      [id]: value
+    }));
   };
   handleSubmit = event => {
     event.preventDefault();
     const { body } = this.state;
-    const { user, articleId } = this.props;
-    console.log(this.props);
-    console.log(this.props.children);
-    postComment(articleId, { body }).then(comment => {
-      this.setState({ body: '' }, () => {
-        getCommnetsForArticleId(articleId);
-      });
+    //console.log(body);
+    const { username, articleId } = this.props;
+
+    // console.log(this.props);
+    // //console.log(this.props.children);
+    postComment(articleId, { username, body }).then(comment => {
+      //   console.log(comment);
+      comment.author = comment.username;
+      this.setState({ comments: [comment, ...this.state.comments] });
+      // this.setState({ body: '' }, () => {
+      //   getCommnetsForArticleId(articleId);
+      // });
+    });
+  };
+  handleDelete = commentId => {
+    //const { articles, fetchComments } = this.props;
+    const { articleId } = this.props;
+    deleteComment(articleId, commentId).then(() => {
+      getCommnetsForArticleId(articleId);
     });
   };
 }
