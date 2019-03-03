@@ -40,7 +40,7 @@ export const getUser = username => {
     const newData = data.data.users.filter(
       user => user.username === `${username}`
     );
-    console.log(newData);
+    // console.log(newData);
     return newData[0];
   });
 };
@@ -64,11 +64,24 @@ export const postComment = (article_id, newComment) => {
     });
 };
 
-export const deleteComment = async (articleId, commentId) => {
+export const deleteComment = (articleId, commentId) => {
   return axios
     .delete(`${BASE_URL}/articles/${articleId}/comments/${commentId}`)
     .then(({ data }) => {
       console.log(data);
       return data;
+    });
+};
+export const getTopics = () => {
+  return axios.get(`${BASE_URL}/topics`).then(({ data }) => {
+    return data.topics;
+  });
+};
+export const getArticlesByTopics = topic => {
+  return axios
+    .get(`${BASE_URL}/topics/${topic}/articles?limit=100000`)
+    .then(({ data }) => {
+      // console.log(data);
+      return data.articles;
     });
 };

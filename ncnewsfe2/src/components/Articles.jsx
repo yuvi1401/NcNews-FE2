@@ -2,7 +2,7 @@ import React from 'react';
 import './Articles.css';
 import { getArticlesData, getSortedArticles } from '../api';
 
-import { Link, Router } from '@reach/router';
+import { Link } from '@reach/router';
 import moment from 'moment';
 class Articles extends React.Component {
   state = {

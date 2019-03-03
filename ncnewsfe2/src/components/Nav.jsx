@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
-import { Link, Router } from '@reach/router';
+import { Link } from '@reach/router';
+import { getTopics } from '../api';
+//import Topics from './Topics.jsx';
 import './Nav.css';
 
 class Nav extends Component {
+  state = {
+    topics: [],
+    isLoading: true
+  };
   render() {
+    const { topics, isLoading } = this.state;
     const { username } = this.props;
+    if (isLoading) return <h3>Loading...</h3>;
     console.log(username);
     return (
       <div className="topNav">
@@ -13,6 +21,24 @@ class Nav extends Component {
             <Link to="/">Home</Link>
             {'  |  '}
             <Link to="/articles">Articles</Link>
+            {'  |  '}
+
+            <span className="dropdown">
+              <button className="dropbtn">
+                Topics
+                <span className="dropdown-content">
+                  {topics.map(topic => {
+                    return (
+                      <li key={topic.slug}>
+                        <Link to={`/topics/${topic.slug}/articles`}>{`${
+                          topic.slug
+                        }`}</Link>
+                      </li>
+                    );
+                  })}
+                </span>
+              </button>
+            </span>
             {'  |  '}
             <Link to="/topics">Add Topic</Link>
             {'  |  '}
@@ -26,24 +52,14 @@ class Nav extends Component {
       </div>
     );
   }
+  componentDidMount() {
+    getTopics().then(topics => {
+      this.setState({
+        topics: topics,
+        isLoading: false
+      });
+    });
+  }
 }
-// export const Nav = () => {
-//   return (
-// <div className="topNav">
-
-//   <nav className="link">
-//     <Link to="/">Home</Link>
-//     {'  |  '}
-//     <Link to="/articles">Articles</Link>
-//     {'  |  '}
-//     <Link to="/topics">Add Topic</Link>
-//     {'  |  '}
-//     <Link to="/articles">Add Article</Link>
-//     {'  |  '}
-//     <Link to="/articles">Log Out</Link>
-//   </nav>
-// </div>
-//   );
-// };
 
 export default Nav;

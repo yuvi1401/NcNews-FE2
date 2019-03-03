@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Link, Router } from '@reach/router';
+//import { Link, Router } from '@reach/router';
 import moment from 'moment';
 import { getCommnetsForArticleId, postComment, deleteComment } from '../api';
 import './Comment.css';
@@ -104,9 +104,18 @@ class Comments extends Component {
   handleDelete = commentId => {
     //const { articles, fetchComments } = this.props;
     const { articleId } = this.props;
-    deleteComment(articleId, commentId).then(() => {
-      getCommnetsForArticleId(articleId);
-    });
+    console.log(commentId);
+    console.log(articleId);
+    deleteComment(articleId, commentId)
+      .then(() => {
+        return getCommnetsForArticleId(articleId);
+      })
+      .then(comments => {
+        this.setState({
+          comments: comments,
+          isLoading: true
+        });
+      });
   };
 }
 
