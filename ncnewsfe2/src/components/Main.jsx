@@ -4,9 +4,7 @@ import Article from './Article.jsx';
 import Home from './Home.jsx';
 //import Nav from './Nav.jsx';
 import ArticlesByTopics from './Topics';
-// import Users from './Users';
-// import ArticlePage from './ArticlePage';
-// import UserPage from './UserPage';
+
 import { Router } from '@reach/router';
 class Main extends React.Component {
   componentDidMount() {

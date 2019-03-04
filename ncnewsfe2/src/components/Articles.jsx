@@ -66,8 +66,9 @@ class Articles extends React.Component {
       //console.log(this.state.articlesData);
     });
   }
+
   handleChangeSort = event => {
-    // console.log(event);
+    //console.log(event);
 
     const { value } = event.target;
     getSortedArticles(value).then(articles => {

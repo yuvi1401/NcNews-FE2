@@ -25,7 +25,7 @@ class ArticlesByTopics extends Component {
                 // style={{ backgroundColor: 'steelblue' }}
               >
                 <Link
-                  to={`${article.article_id}`}
+                  to={`/articles/${article.article_id}`}
                   style={{ textDecoration: 'none', color: '#080BB4' }}
                 >
                   <h1>{article.title}</h1>
