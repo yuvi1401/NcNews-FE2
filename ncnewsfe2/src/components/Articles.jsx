@@ -34,22 +34,14 @@ class Articles extends React.Component {
             return (
               //   <React.Fragment key={article.article_id}>
 
-              <div
-                key={article.article_id}
-                className="articleStyle"
-                style={{ backgroundColor: 'steelblue' }}
-              >
+              <div key={article.article_id} className="articleStyle">
                 <Link
                   to={`${article.article_id}`}
+                  id="linkStyle"
                   style={{ textDecoration: 'none', color: '#080BB4' }}
                 >
-                  <h1>
-                    {article.title}
-                    {/* <Link to={article.title}>{article.title}</Link> */}
-                  </h1>
-                  {/* <Link to={`${article.article_id}`}>
-                  ArticleId: {article.article_id}
-                </Link> */}
+                  <h1>{article.title}</h1>
+
                   <h3>
                     Votes:{article.votes} {'  |  '} Topic: {article.topic}{' '}
                     {' | '} Comment Counts: {article.comment_count}
@@ -76,6 +68,7 @@ class Articles extends React.Component {
   }
   handleChangeSort = event => {
     // console.log(event);
+
     const { value } = event.target;
     getSortedArticles(value).then(articles => {
       this.setState({

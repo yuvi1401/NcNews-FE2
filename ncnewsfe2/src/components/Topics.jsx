@@ -22,7 +22,7 @@ class ArticlesByTopics extends Component {
               <div
                 key={article.article_id}
                 className="articleStyle"
-                style={{ backgroundColor: 'steelblue' }}
+                // style={{ backgroundColor: 'steelblue' }}
               >
                 <Link
                   to={`${article.article_id}`}
@@ -36,19 +36,6 @@ class ArticlesByTopics extends Component {
                   </h3>
                   <h3>Added On: {moment(article.created_at).fromNow()}</h3>
                 </Link>
-                {/* <Redirect
-                  to={`/articles/${article.article_id}`
-                }
-                  style={{ textDecoration: 'none', color: '#080BB4' }}
-                >
-                  <h1>{article.title}</h1>
-
-                  <h3>
-                    Votes:{article.votes} {'  |  '} Topic: {article.topic}{' '}
-                    {' | '} Comment Counts: {article.comment_count}
-                  </h3>
-                  <h3>Added On: {moment(article.created_at).fromNow()}</h3>
-                </Redirect> */}
               </div>
             );
           })}
@@ -66,6 +53,19 @@ class ArticlesByTopics extends Component {
       });
       //console.log(this.state.articlesData);
     });
+  }
+  componentDidUpdate(prevProps) {
+    // console.log(prevProps);
+    // console.log(this.props.topic);
+    if (this.props.topic !== prevProps.topic) {
+      getArticlesByTopics(this.props.topic).then(articles => {
+        this.setState({
+          articlesData: articles,
+          isLoading: false
+        });
+        //console.log(this.state.articlesData);
+      });
+    }
   }
 }
 

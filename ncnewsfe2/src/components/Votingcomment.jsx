@@ -15,7 +15,7 @@ class VotesOnComments extends Component {
     //const{votes, commentId, type, articleId} = this.props;
     const { voteChange } = this.state;
     return (
-      <div className="container">
+      <div className="votescontainer">
         <button
           className="button"
           onClick={() => this.handleVoteChange(1)}
@@ -24,7 +24,7 @@ class VotesOnComments extends Component {
           <i className="fas fa-arrow-up" />
         </button>
         {/* <p>Votes: {parseInt(`${article.votes + voteChange}`)}</p> */}
-        <p>Votes: {parseInt(`${this.props.votes + voteChange}`)}</p>
+        <span>Votes: {parseInt(`${this.props.votes + voteChange}`)}</span>
         <button
           className="button"
           onClick={() => this.handleVoteChange(-1)}
