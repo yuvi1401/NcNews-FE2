@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import { getCommnetsForArticleId, postComment, deleteComment } from '../api';
 import './Comment.css';
-
+import VotesOnComments from './Votingcomment.jsx';
 class Comments extends Component {
   state = {
     comments: [],
@@ -14,6 +14,7 @@ class Comments extends Component {
 
   render() {
     const { username } = this.props;
+    const { articleId } = this.props;
     //console.log(username);
     const { comments, body } = this.state;
     return (
@@ -51,12 +52,14 @@ class Comments extends Component {
                       Delete
                     </button>
                   )}
-                  {/* <Voting
-              votes={parseInt(comment.votes)}
-              id={articleData.article_id}
-              commentId={comment.comment_id}
-              type={'comment'}
-            /> */}
+                  <div>
+                    <VotesOnComments
+                      votes={parseInt(comment.votes)}
+                      commentId={comment.comment_id}
+                      type={'comment'}
+                      articleId={articleId}
+                    />
+                  </div>
                 </h4>
                 <section className="comment__body">{comment.body}</section>
               </article>
@@ -104,8 +107,8 @@ class Comments extends Component {
   handleDelete = commentId => {
     //const { articles, fetchComments } = this.props;
     const { articleId } = this.props;
-    console.log(commentId);
-    console.log(articleId);
+    // console.log(commentId);
+    // console.log(articleId);
     deleteComment(articleId, commentId)
       .then(() => {
         return getCommnetsForArticleId(articleId);

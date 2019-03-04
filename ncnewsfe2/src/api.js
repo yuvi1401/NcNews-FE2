@@ -17,7 +17,7 @@ export const getArticleData = id => {
 };
 export const getSortedArticles = criteria => {
   return axios
-    .get(`${BASE_URL}/articles?sort_by=${criteria}`)
+    .get(`${BASE_URL}/articles?limit=100000&sort_by=${criteria}`)
     .then(({ data }) => {
       // console.log(data);
       return data.articles;
@@ -81,7 +81,16 @@ export const getArticlesByTopics = topic => {
   return axios
     .get(`${BASE_URL}/topics/${topic}/articles?limit=100000`)
     .then(({ data }) => {
-      // console.log(data);
+      console.log(data);
       return data.articles;
     });
+};
+
+export const changeVoteOnComment = (articleId, voteNum, commentId) => {
+  return axios.patch(
+    `${BASE_URL}/articles/${articleId}/comments/${commentId}`,
+    {
+      inc_votes: `${voteNum}`
+    }
+  );
 };

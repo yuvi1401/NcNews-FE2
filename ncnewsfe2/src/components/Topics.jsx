@@ -3,6 +3,7 @@ import { getArticlesByTopics } from '../api';
 import moment from 'moment';
 import { Link } from '@reach/router';
 import './Articles.css';
+//import { navigate } from '@reach/router';
 class ArticlesByTopics extends Component {
   state = {
     articlesData: [],
@@ -35,6 +36,19 @@ class ArticlesByTopics extends Component {
                   </h3>
                   <h3>Added On: {moment(article.created_at).fromNow()}</h3>
                 </Link>
+                {/* <Redirect
+                  to={`/articles/${article.article_id}`
+                }
+                  style={{ textDecoration: 'none', color: '#080BB4' }}
+                >
+                  <h1>{article.title}</h1>
+
+                  <h3>
+                    Votes:{article.votes} {'  |  '} Topic: {article.topic}{' '}
+                    {' | '} Comment Counts: {article.comment_count}
+                  </h3>
+                  <h3>Added On: {moment(article.created_at).fromNow()}</h3>
+                </Redirect> */}
               </div>
             );
           })}
@@ -44,6 +58,7 @@ class ArticlesByTopics extends Component {
   }
   componentDidMount() {
     const { topic } = this.props;
+    console.log(topic);
     getArticlesByTopics(topic).then(articles => {
       this.setState({
         articlesData: articles,

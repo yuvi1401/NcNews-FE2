@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Article.css';
 //import { Nav } from './Nav';
-import { getArticleData, changeVoteOnArticle } from '../api';
+import { getArticleData } from '../api';
 import Votes from './Votes.jsx';
 import Comments from './Comment.jsx';
 import moment from 'moment';
