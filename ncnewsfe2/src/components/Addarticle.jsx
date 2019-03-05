@@ -10,9 +10,9 @@ class AddArticle extends Component {
     topic: ''
   };
   render() {
-    const { path } = this.props;
+    const { topics, path } = this.props;
     //console.log(this.props);
-    const topics = this.props.location.state.topics;
+    //const topics = this.props.location.state.topics;
     //console.log(topics);
     //console.log(this.props);
     // console.log(this.props.children);

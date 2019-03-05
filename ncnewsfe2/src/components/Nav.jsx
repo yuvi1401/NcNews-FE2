@@ -5,16 +5,16 @@ import { getTopics } from '../api';
 import './Nav.css';
 
 class Nav extends Component {
-  state = {
-    topics: [],
-    isLoading: true
-  };
+  // state = {
+  //   topics: [],
+  //   isLoading: true
+  // };
   render() {
-    const { topics, isLoading } = this.state;
-    const { username } = this.props;
-    if (isLoading) return <h3>Loading...</h3>;
+    //const { topics, isLoading } = this.state;
+    const { topics, username } = this.props;
+    //if (isLoading) return <h3>Loading...</h3>;
     //console.log('topics?', topics);
-    console.log(username);
+    console.log(this.props);
     return (
       <div className="topNav">
         {username ? (
@@ -43,7 +43,7 @@ class Nav extends Component {
             {'  |  '}
             <Link to="/topics">Add Topic</Link>
             {'  |  '}
-            <Link to="/post-article" state={{ topics }}>
+            <Link to="/post-article" topics={topics}>
               Add Article
             </Link>
             {'  |  '}
@@ -55,14 +55,14 @@ class Nav extends Component {
       </div>
     );
   }
-  componentDidMount() {
-    getTopics().then(topics => {
-      this.setState({
-        topics: topics,
-        isLoading: false
-      });
-    });
-  }
+  // componentDidMount() {
+  //   getTopics().then(topics => {
+  //     this.setState({
+  //       topics: topics,
+  //       isLoading: false
+  //     });
+  //   });
+  // }
 }
 
 export default Nav;

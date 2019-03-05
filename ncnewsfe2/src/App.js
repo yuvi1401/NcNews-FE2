@@ -12,20 +12,24 @@ import { navigate } from '@reach/router';
 class App extends Component {
   state = {
     user: {},
+    topics: [],
+    isLoading: false,
     hasError: false
   };
 
   render() {
-    const { user, hasError } = this.state;
+    const { user, topics, isLoading, hasError } = this.state;
+    if (isLoading) return <h3>Loading...</h3>;
     return (
       <div className="App">
         <h1> News App </h1>
-        <Nav username={user.username} />
+
+        <Nav username={user.username} topics={topics} />
         {hasError ? (
           <h2>Can't load articles</h2>
         ) : (
           <Login login={this.setUser} user={user}>
-            <Main user={user} />
+            <Main user={user} topics={topics} />
           </Login>
         )}
       </div>
@@ -43,6 +47,15 @@ class App extends Component {
     navigate('/');
     this.setState({ user: {} });
   };
+
+  componentDidMount() {
+    api.getTopics().then(topics => {
+      this.setState({
+        topics: topics,
+        isLoading: false
+      });
+    });
+  }
 }
 
 export default App;
