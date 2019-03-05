@@ -43,7 +43,7 @@ class Login extends Component {
 
   handleChange = ({ target }) => {
     this.setState({ username: target.value });
-    console.log(this.state.username);
+    // console.log(this.state.username);
   };
 }
 

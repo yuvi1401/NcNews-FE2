@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
-import { getTopics } from '../api';
-//import Topics from './Topics.jsx';
+
 import './Nav.css';
 
 class Nav extends Component {
-  // state = {
-  //   topics: [],
-  //   isLoading: true
-  // };
   render() {
     //const { topics, isLoading } = this.state;
     const { topics, username } = this.props;
@@ -45,7 +40,7 @@ class Nav extends Component {
             {'  |  '}
             <Link to="/post-article">Add Article</Link>
             {'  |  '}
-            <Link to="/articles">Log Out</Link>
+            <Link to="/">Log Out</Link>
           </nav>
         ) : (
           <h1 className="warning">Please Login</h1>
@@ -53,14 +48,6 @@ class Nav extends Component {
       </div>
     );
   }
-  // componentDidMount() {
-  //   getTopics().then(topics => {
-  //     this.setState({
-  //       topics: topics,
-  //       isLoading: false
-  //     });
-  //   });
-  // }
 }
 
 export default Nav;

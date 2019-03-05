@@ -32,7 +32,12 @@ export const changeVoteOnArticle = (articleId, voteNum) => {
 // export const getUserForLogin = username => {
 //   return axios.get(`${BASE_URL}/api/users/${username}`);
 // };
-
+export const deleteArticle = articleId => {
+  return axios.delete(`${BASE_URL}/articles/${articleId}`).then(({ data }) => {
+    console.log(data);
+    return data;
+  });
+};
 export const getUser = username => {
   return axios.get(`${BASE_URL}/users`).then(data => {
     // console.log(data.data.users);
@@ -68,7 +73,7 @@ export const deleteComment = (articleId, commentId) => {
   return axios
     .delete(`${BASE_URL}/articles/${articleId}/comments/${commentId}`)
     .then(({ data }) => {
-      console.log(data);
+      //console.log(data);
       return data;
     });
 };

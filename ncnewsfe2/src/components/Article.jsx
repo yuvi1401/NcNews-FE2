@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './Article.css';
 //import { Nav } from './Nav';
-import { getArticleData } from '../api';
+import { getArticleData, deleteArticle } from '../api';
 import Votes from './Votes.jsx';
 import Comments from './Comment.jsx';
 import moment from 'moment';
+import { navigate } from '@reach/router';
 
 class singleArticle extends Component {
   state = {
@@ -20,7 +21,15 @@ class singleArticle extends Component {
       >
         <h1>{article.title}</h1>
         <h2>
-          Topic : {article.topic} {'  |  '} Author: {article.author}
+          Topic : {article.topic} {'  |  '} Author: {article.author} |{' '}
+          {username === article.author && (
+            <button
+              className="button button--delete"
+              onClick={() => this.handleDelete(article.article_id)}
+            >
+              Delete
+            </button>
+          )}
         </h2>
         {/* <h2>Author: {article.author}</h2> */}
         <p id="article_body">{article.body}</p>
@@ -37,6 +46,12 @@ class singleArticle extends Component {
       article
     });
   });
+
+  handleDelete = articleId => {
+    deleteArticle(articleId).then(() => {
+      navigate('/articles');
+    });
+  };
 }
 
 export default singleArticle;

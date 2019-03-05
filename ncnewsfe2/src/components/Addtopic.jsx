@@ -6,15 +6,15 @@ import AddArticle from './Addarticle.jsx';
 class AddTopic extends Component {
   state = {
     topic: {},
-    isComplete: false,
+
     slug: '',
     description: ''
   };
   render() {
     const { topics, username } = this.props;
     //console.log(this.props);
-    const { isComplete, slug, description } = this.state;
-    return !isComplete ? (
+    const { slug, description } = this.state;
+    return (
       <section>
         <h1> Create a Topic</h1>
         <form onSubmit={this.handleSubmit}>
@@ -37,8 +37,6 @@ class AddTopic extends Component {
           <button type="submit">POST</button>
         </form>
       </section>
-    ) : (
-      <>({isComplete && <AddArticle username={username} topics={topics} />})</>
     );
   }
   handleChange = event => {
