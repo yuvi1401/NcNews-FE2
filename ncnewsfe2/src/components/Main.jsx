@@ -5,7 +5,7 @@ import Home from './Home.jsx';
 //import Nav from './Nav.jsx';
 import ArticlesByTopics from './Topics.jsx';
 import AddArticle from './Addarticle';
-//import AddTopic from './Addtopic'
+import AddTopic from './Addtopic';
 import { Router } from '@reach/router';
 
 class Main extends React.Component {
@@ -27,7 +27,7 @@ class Main extends React.Component {
           username={user.username}
           topics={topics}
         />
-        {/* <AddTopic path='/post-topic'username={user.username}/> */}
+        <AddTopic path="/post-topic" username={user.username} topics={topics} />
         {/* <Articles path="/topics/:topic" user={user} />
        
         <Topics path="/topics" /> */}

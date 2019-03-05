@@ -81,7 +81,7 @@ export const getArticlesByTopics = topic => {
   return axios
     .get(`${BASE_URL}/topics/${topic}/articles?limit=100000`)
     .then(({ data }) => {
-      console.log(data);
+      // console.log(data);
       return data.articles;
     });
 };

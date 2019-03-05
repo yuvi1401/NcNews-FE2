@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-
+import { navigate } from '@reach/router';
 import { postTopic, getTopics } from '../api';
 import AddArticle from './Addarticle.jsx';
+
 class AddTopic extends Component {
   state = {
     topic: {},
@@ -10,7 +11,8 @@ class AddTopic extends Component {
     description: ''
   };
   render() {
-    const { topics, user } = this.props;
+    const { topics, username } = this.props;
+    //console.log(this.props);
     const { isComplete, slug, description } = this.state;
     return !isComplete ? (
       <section>
@@ -20,7 +22,7 @@ class AddTopic extends Component {
             type="text"
             id="slug"
             value={slug}
-            onChange={this.handlechnge}
+            onChange={this.handleChange}
             required
             placeholder="Enter Topic Name"
           />
@@ -36,10 +38,11 @@ class AddTopic extends Component {
         </form>
       </section>
     ) : (
-      <>({isComplete && <AddArticle user={user} topics={topics} />})</>
+      <>({isComplete && <AddArticle username={username} topics={topics} />})</>
     );
   }
   handleChange = event => {
+    //console.log(event);
     const { id } = event.target;
     const value =
       id === 'slug' ? event.target.value.toLowerCase() : event.target.value;
@@ -51,13 +54,9 @@ class AddTopic extends Component {
     event.preventDefault();
     const { slug, description } = this.state;
     postTopic(slug, description).then(topic => {
-      this.setState(() => ({ topic, postComplete: true }));
+      // console.log(topic);
+      navigate(`/topics/${topic.slug}/articles`);
     });
   };
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.isComplete !== this.state.isComplete) {
-      this.props.getTopics();
-    }
-  }
 }
 export default AddTopic;

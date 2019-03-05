@@ -41,11 +41,9 @@ class Nav extends Component {
               </button>
             </span>
             {'  |  '}
-            <Link to="/topics">Add Topic</Link>
+            <Link to="/post-topic">Add Topic</Link>
             {'  |  '}
-            <Link to="/post-article" topics={topics}>
-              Add Article
-            </Link>
+            <Link to="/post-article">Add Article</Link>
             {'  |  '}
             <Link to="/articles">Log Out</Link>
           </nav>
