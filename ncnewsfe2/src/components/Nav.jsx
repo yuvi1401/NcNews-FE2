@@ -13,6 +13,7 @@ class Nav extends Component {
     const { topics, isLoading } = this.state;
     const { username } = this.props;
     if (isLoading) return <h3>Loading...</h3>;
+    //console.log('topics?', topics);
     console.log(username);
     return (
       <div className="topNav">
@@ -42,7 +43,9 @@ class Nav extends Component {
             {'  |  '}
             <Link to="/topics">Add Topic</Link>
             {'  |  '}
-            <Link to="/articles">Add Article</Link>
+            <Link to="/post-article" state={{ topics }}>
+              Add Article
+            </Link>
             {'  |  '}
             <Link to="/articles">Log Out</Link>
           </nav>

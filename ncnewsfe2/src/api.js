@@ -94,3 +94,18 @@ export const changeVoteOnComment = (articleId, voteNum, commentId) => {
     }
   );
 };
+
+export const postArticle = (topic, newArticle) => {
+  return axios
+    .post(`${BASE_URL}/topics/${topic}/articles`, newArticle)
+    .then(({ data }) => {
+      return data.article;
+    });
+};
+export const postTopic = (slug, description) => {
+  return axios
+    .post(`${BASE_URL}/topics`, { slug, description })
+    .then(({ data }) => {
+      return data.topic;
+    });
+};

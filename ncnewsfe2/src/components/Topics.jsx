@@ -45,7 +45,7 @@ class ArticlesByTopics extends Component {
   }
   componentDidMount() {
     const { topic } = this.props;
-    console.log(topic);
+    //console.log(topic);
     getArticlesByTopics(topic).then(articles => {
       this.setState({
         articlesData: articles,

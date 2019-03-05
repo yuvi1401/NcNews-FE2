@@ -2,10 +2,12 @@ import React from 'react';
 import Articles from './Articles.jsx';
 import Article from './Article.jsx';
 import Home from './Home.jsx';
-//import Nav from './Nav.jsx';
-import ArticlesByTopics from './Topics';
-
+import Nav from './Nav.jsx';
+import ArticlesByTopics from './Topics.jsx';
+import AddArticle from './Addarticle';
+//import AddTopic from './Addtopic'
 import { Router } from '@reach/router';
+
 class Main extends React.Component {
   componentDidMount() {
     const { user } = this.props;
@@ -20,6 +22,8 @@ class Main extends React.Component {
         <Articles path="/articles" />
         <Article path="/articles/:article_id" username={user.username} />
         <ArticlesByTopics path="/topics/:topic/articles" />
+        <AddArticle path="/post-article" username={user.username} />
+        {/* <AddTopic path='/post-topic'username={user.username}/> */}
         {/* <Articles path="/topics/:topic" user={user} />
        
         <Topics path="/topics" /> */}

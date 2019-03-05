@@ -1,14 +1,21 @@
-import React, { Component } from 'React';
+import React, { Component } from 'react';
 import { navigate } from '@reach/router';
+import { postArticle } from '../api';
+import Nav from './Nav.jsx';
 
-class PostArticle extends Component {
+class AddArticle extends Component {
   state = {
     title: '',
     body: '',
     topic: ''
   };
   render() {
-    const { topics, path } = this.props;
+    const { path } = this.props;
+    //console.log(this.props);
+    const topics = this.props.location.state.topics;
+    //console.log(topics);
+    //console.log(this.props);
+    // console.log(this.props.children);
     const { title, body, topic } = this.state;
     return (
       <div>
@@ -26,7 +33,7 @@ class PostArticle extends Component {
             required
             placeholder="Article Title"
           />
-          <textArea
+          <textarea
             type="text"
             id="body"
             value={body}
@@ -39,7 +46,7 @@ class PostArticle extends Component {
             {topics.map(topic => {
               return (
                 <option key={topic.slug} value={topic.slug}>
-                  {topic.slug[0].toUpperCase() + topic.slug.slice(1)}
+                  {topic.slug}
                 </option>
               );
             })}
@@ -60,11 +67,11 @@ class PostArticle extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const userId = this.props.user.user_id;
+    const { username } = this.props;
     const { title, body, topic } = this.state;
-    PostArticle(topic, { title, body, userId }).then(article => {
+    postArticle(topic, { title, body, username }).then(article => {
       navigate(`/articles/${article.article_id}`);
     });
   };
 }
-export default PostArticle;
+export default AddArticle;
