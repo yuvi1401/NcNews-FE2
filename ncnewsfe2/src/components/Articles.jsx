@@ -4,6 +4,8 @@ import { getArticlesData, getSortedArticles } from '../api';
 
 import { Link } from '@reach/router';
 import moment from 'moment';
+import { navigate } from '@reach/router';
+
 class Articles extends React.Component {
   state = {
     articlesData: [],
@@ -58,13 +60,15 @@ class Articles extends React.Component {
     );
   }
   componentDidMount() {
-    getArticlesData().then(articles => {
-      this.setState({
-        articlesData: articles,
-        isLoading: false
-      });
-      //console.log(this.state.articlesData);
-    });
+    getArticlesData()
+      .then(articles => {
+        this.setState({
+          articlesData: articles,
+          isLoading: false
+        });
+        //console.log(this.state.articlesData);
+      })
+      .catch(err => navigate('/404', { replace: true }));
   }
 
   handleChangeSort = event => {

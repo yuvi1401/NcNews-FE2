@@ -24,7 +24,7 @@ class App extends Component {
       <div className="App">
         <h1> News App </h1>
 
-        <Nav username={user.username} topics={topics} />
+        <Nav username={user.username} topics={topics} logOut={this.logOut} />
         {hasError ? (
           <h2>Can't load articles</h2>
         ) : (
@@ -40,12 +40,18 @@ class App extends Component {
     api
       .getUser(username)
       .then(username => this.setState({ user: username }))
+      .then(localStorage.setItem('user', JSON.stringify(this.state.user)))
       .catch(err => this.setState({ hasError: true }));
   };
 
-  clearUser = () => {
+  // clearUser = () => {
+  //   navigate('/');
+  //   this.setState({ user: {} });
+  // };
+  logOut = () => {
     navigate('/');
     this.setState({ user: {} });
+    localStorage.clear();
   };
 
   componentDidMount() {

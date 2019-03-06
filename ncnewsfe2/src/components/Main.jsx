@@ -7,6 +7,8 @@ import ArticlesByTopics from './Topics.jsx';
 import AddArticle from './Addarticle';
 import AddTopic from './Addtopic';
 import { Router } from '@reach/router';
+import Error from './Error.jsx';
+import { navigate } from '@reach/router';
 
 class Main extends React.Component {
   componentDidMount() {
@@ -28,12 +30,16 @@ class Main extends React.Component {
           topics={topics}
         />
         <AddTopic path="/post-topic" username={user.username} topics={topics} />
+        <Error path="/404" goHome={this.goHome} />
         {/* <Articles path="/topics/:topic" user={user} />
        
         <Topics path="/topics" /> */}
       </Router>
     );
   }
+  goHome = () => {
+    navigate('/');
+  };
 }
 
 export default Main;

@@ -41,16 +41,20 @@ class singleArticle extends Component {
     );
   }
 
-  articleData = getArticleData(this.props.article_id).then(article => {
-    this.setState({
-      article
-    });
-  });
+  articleData = getArticleData(this.props.article_id)
+    .then(article => {
+      this.setState({
+        article
+      });
+    })
+    .catch(err => navigate('/404', { replace: true }));
 
   handleDelete = articleId => {
-    deleteArticle(articleId).then(() => {
-      navigate('/articles');
-    });
+    deleteArticle(articleId)
+      .then(() => {
+        navigate('/articles');
+      })
+      .catch(err => navigate('/404', { replace: true }));
   };
 }
 

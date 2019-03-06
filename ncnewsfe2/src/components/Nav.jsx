@@ -6,7 +6,7 @@ import './Nav.css';
 class Nav extends Component {
   render() {
     //const { topics, isLoading } = this.state;
-    const { topics, username } = this.props;
+    const { topics, username, logOut } = this.props;
     //if (isLoading) return <h3>Loading...</h3>;
     //console.log('topics?', topics);
     console.log(this.props);
@@ -40,7 +40,7 @@ class Nav extends Component {
             {'  |  '}
             <Link to="/post-article">Add Article</Link>
             {'  |  '}
-            <Link to="/">Log Out</Link>
+            <button onClick={logOut}>Log Out</button>
           </nav>
         ) : (
           <h1 className="warning">Please Login</h1>
