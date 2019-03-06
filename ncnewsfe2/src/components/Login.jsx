@@ -7,7 +7,7 @@ class Login extends Component {
 
   render() {
     const { user, children } = this.props;
-    console.log(this.props);
+    //console.log(this.props);
     const { username } = this.state;
     if (user.username) return children;
     return (

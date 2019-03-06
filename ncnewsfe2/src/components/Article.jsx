@@ -47,14 +47,14 @@ class singleArticle extends Component {
         article
       });
     })
-    .catch(err => navigate('/404', { replace: true }));
+    .catch(err => navigate('/404'));
 
   handleDelete = articleId => {
     deleteArticle(articleId)
       .then(() => {
         navigate('/articles');
       })
-      .catch(err => navigate('/404', { replace: true }));
+      .catch(err => navigate('/404'));
   };
 }
 

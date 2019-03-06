@@ -40,7 +40,9 @@ class Nav extends Component {
             {'  |  '}
             <Link to="/post-article">Add Article</Link>
             {'  |  '}
-            <button onClick={logOut}>Log Out</button>
+            <button onClick={logOut} className="button-logout">
+              Log Out
+            </button>
           </nav>
         ) : (
           <h1 className="warning">Please Login</h1>

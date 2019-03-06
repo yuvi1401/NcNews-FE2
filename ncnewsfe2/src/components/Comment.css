@@ -10,11 +10,12 @@
   text-decoration-color: blue;
 }
 
-#body {
+.comment #body {
   height: 100px;
   width: 500px;
   background-color: rgb(207, 213, 144);
-  margin: auto;
+  margin: 10px auto;
   display: block;
-  font-size: 1em;
+  font-size: 15px;
+  background: none;
 }

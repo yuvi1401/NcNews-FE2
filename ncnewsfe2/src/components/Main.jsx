@@ -16,7 +16,7 @@ class Main extends React.Component {
     localStorage.setItem('user', JSON.stringify(user));
   }
   render() {
-    const { user, topics } = this.props;
+    const { user, topics, goHome } = this.props;
     //console.log(this.props);
     return (
       <Router className="main">
@@ -30,16 +30,13 @@ class Main extends React.Component {
           topics={topics}
         />
         <AddTopic path="/post-topic" username={user.username} topics={topics} />
-        <Error path="/404" goHome={this.goHome} />
+        <Error path="/404" goHome={goHome} />
         {/* <Articles path="/topics/:topic" user={user} />
        
         <Topics path="/topics" /> */}
       </Router>
     );
   }
-  goHome = () => {
-    navigate('/');
-  };
 }
 
 export default Main;

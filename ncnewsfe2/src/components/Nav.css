@@ -19,17 +19,6 @@
   font-size: 20px;
 }
 
-/* Change the color of links on hover */
-/* .topnav link.hover {
-  background-color: #ddd;
-  color: white;
-} */
-
-/* Add a color to the active/current link
-  .topnav a.active {
-    background-color: #4CAF50;
-    color: white;
-  } */
 .dropdown {
   float: center;
   overflow: hidden;
@@ -75,4 +64,19 @@
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.topNav .button-logout {
+  font-size: 17px;
+  border: none;
+  outline: none;
+  color: none;
+  padding: 14px 16px;
+  background-color: greenyellow;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #212161;
+  margin: 0;
+}
+.button-logout:hover {
+  background-color: lightcoral;
 }

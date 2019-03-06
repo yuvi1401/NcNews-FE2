@@ -45,7 +45,8 @@ export const getUser = username => {
     const newData = data.data.users.filter(
       user => user.username === `${username}`
     );
-    // console.log(newData);
+    console.log(newData);
+    if (!newData.length) return Promise.reject('No user found');
     return newData[0];
   });
 };

@@ -26,28 +26,42 @@ class App extends Component {
 
         <Nav username={user.username} topics={topics} logOut={this.logOut} />
         {hasError ? (
-          <h2>Can't load articles</h2>
+          <h2>
+            <div>
+              Can't load articles... Possible Reasons: Incorrect Username/
+              Network Error. Try to Login Again.
+            </div>
+            {/* <div>
+              <button onClick={this.goHome} className="button">
+                HOME
+              </button>
+            </div> */}
+          </h2>
         ) : (
           <Login login={this.setUser} user={user}>
-            <Main user={user} topics={topics} />
+            <Main user={user} topics={topics} goHome={this.goHome} />
           </Login>
         )}
       </div>
     );
   }
 
+  componentDidUpdate(prevState) {
+    if (prevState.user !== this.state.user) {
+      localStorage.setItem('user', JSON.stringify(this.state.user));
+    }
+  }
+
   setUser = username => {
     api
       .getUser(username)
-      .then(username => this.setState({ user: username }))
-      .then(localStorage.setItem('user', JSON.stringify(this.state.user)))
+      .then(username => {
+        console.log(username);
+        this.setState({ user: username });
+      })
       .catch(err => this.setState({ hasError: true }));
   };
 
-  // clearUser = () => {
-  //   navigate('/');
-  //   this.setState({ user: {} });
-  // };
   logOut = () => {
     navigate('/');
     this.setState({ user: {} });
@@ -55,6 +69,9 @@ class App extends Component {
   };
 
   componentDidMount() {
+    const user = localStorage.getItem('user');
+    if (user) {
+    }
     api.getTopics().then(topics => {
       this.setState({
         topics: topics,
@@ -62,6 +79,9 @@ class App extends Component {
       });
     });
   }
+  goHome = () => {
+    navigate('/');
+  };
 }
 
 export default App;
