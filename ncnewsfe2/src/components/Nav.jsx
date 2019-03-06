@@ -9,7 +9,7 @@ class Nav extends Component {
     const { topics, username, logOut } = this.props;
     //if (isLoading) return <h3>Loading...</h3>;
     //console.log('topics?', topics);
-    console.log(this.props);
+    //console.log(this.props);
     return (
       <div className="topNav">
         {username ? (

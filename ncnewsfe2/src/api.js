@@ -9,7 +9,7 @@ export const getArticlesData = () => {
 };
 export const getArticleData = id => {
   return axios.get(`${BASE_URL}/articles/${id}`).then(({ data }) => {
-    // console.log(data);
+    console.log(data.article);
     return data.article;
   });
   // export const getArticleBySort = value =>{
@@ -45,7 +45,7 @@ export const getUser = username => {
     const newData = data.data.users.filter(
       user => user.username === `${username}`
     );
-    console.log(newData);
+    //console.log(newData);
     if (!newData.length) return Promise.reject('No user found');
     return newData[0];
   });

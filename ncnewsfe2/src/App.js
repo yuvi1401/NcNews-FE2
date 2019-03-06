@@ -70,7 +70,8 @@ class App extends Component {
 
   componentDidMount() {
     const user = localStorage.getItem('user');
-    if (user) {
+    if (user && !user.username) {
+      this.setState({ user: JSON.parse(localStorage.getItem('user')) });
     }
     api.getTopics().then(topics => {
       this.setState({
