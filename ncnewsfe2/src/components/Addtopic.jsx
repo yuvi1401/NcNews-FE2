@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { navigate } from '@reach/router';
 import { postTopic, getTopics } from '../api';
 import AddArticle from './Addarticle.jsx';
+import './Addtopic.css';
 
 class AddTopic extends Component {
   state = {
@@ -17,7 +18,7 @@ class AddTopic extends Component {
     return (
       <section>
         <h1> Create a Topic</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="commentForm">
           <input
             type="text"
             id="slug"
@@ -33,8 +34,11 @@ class AddTopic extends Component {
             onChange={this.handleChange}
             placeholder="Topic description"
             required
+            className="textArea"
           />
-          <button type="submit">POST</button>
+          <button type="submit" id="button">
+            POST
+          </button>
         </form>
       </section>
     );

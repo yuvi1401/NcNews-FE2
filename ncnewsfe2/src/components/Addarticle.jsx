@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { navigate } from '@reach/router';
 import { postArticle } from '../api';
 import Nav from './Nav.jsx';
+import './Addarticle.css';
 
 class AddArticle extends Component {
   state = {
@@ -24,7 +25,7 @@ class AddArticle extends Component {
         ) : (
           <h1>Post an Article in new topic</h1>
         )}
-        <form onSubmit={this.handleSubmit} className="postForm">
+        <form onSubmit={this.handleSubmit} className="articleForm">
           <input
             type="text"
             id="title"
@@ -51,7 +52,7 @@ class AddArticle extends Component {
               );
             })}
           </select>
-          <button type="submit" className="button">
+          <button type="submit" id="button">
             Post
           </button>
         </form>
