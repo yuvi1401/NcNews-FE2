@@ -17,7 +17,7 @@ class singleArticle extends Component {
     return (
       <div
         className="articleDataStyle"
-        style={{ backgroundColor: 'steelblue' }}
+        // style={{ backgroundColor: 'steelblue' }}
       >
         <h1>{article.title}</h1>
         <h2>
