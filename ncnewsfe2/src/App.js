@@ -43,6 +43,7 @@ class App extends Component {
             <Main user={user} topics={topics} goHome={this.goHome} />
           </Login>
         )}
+
         <Footer />
       </div>
     );

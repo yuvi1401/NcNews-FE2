@@ -1,8 +1,8 @@
-.header {
+.topBar {
   height: 100px;
   background-color: thistle;
   border-bottom: 1px solid lightgreen;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
 }
