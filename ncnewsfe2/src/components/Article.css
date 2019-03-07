@@ -23,6 +23,8 @@
   font-size: 1.5em;
   justify-content: space-evenly;
   text-align: justify;
+  -moz-text-align-last: center;
+  text-align-last: center;
 }
 #textboxid {
   height: 100px;
