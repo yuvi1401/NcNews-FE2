@@ -31,9 +31,6 @@ class Main extends React.Component {
         />
         <AddTopic path="/post-topic" username={user.username} topics={topics} />
         <Error path="/404" goHome={goHome} />
-        {/* <Articles path="/topics/:topic" user={user} />
-       
-        <Topics path="/topics" /> */}
       </Router>
     );
   }

@@ -1,13 +1,9 @@
 .articleStyle {
-  width: 500px;
+  width: 100%;
   margin: 10px auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: -moz-linear-gradient();
+  /* background: -moz-linear-gradient(); */
   background-color: aquamarine;
 }
-/* #linkStyle {
-  text-decoration: none;
-  color: '#080BB4';
-} */

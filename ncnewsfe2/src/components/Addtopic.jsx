@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { navigate } from '@reach/router';
-import { postTopic, getTopics } from '../api';
-import AddArticle from './Addarticle.jsx';
+import { postTopic } from '../api';
+//import AddArticle from './Addarticle.jsx';
 import './Addtopic.css';
 
 class AddTopic extends Component {
@@ -12,13 +12,13 @@ class AddTopic extends Component {
     description: ''
   };
   render() {
-    const { topics, username } = this.props;
+    // const { topics, username } = this.props;
     //console.log(this.props);
     const { slug, description } = this.state;
     return (
       <section>
         <h1> Create a Topic</h1>
-        <form onSubmit={this.handleSubmit} className="commentForm">
+        <form onSubmit={this.handleSubmit} className="topicForm">
           <input
             type="text"
             id="slug"

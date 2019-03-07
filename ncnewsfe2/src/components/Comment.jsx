@@ -79,9 +79,6 @@ class Comments extends Component {
     });
   }
   handleChange = event => {
-    // this.setState({
-    //   body: event.target.value
-    // });
     const { id, value } = event.target;
     this.setState(() => ({
       [id]: value

@@ -19,13 +19,25 @@ class Articles extends React.Component {
         <div>
           <h3>Sort Articles by</h3>
           <ul>
-            <button value="comment_count" onClick={this.handleChangeSort}>
+            <button
+              value="comment_count"
+              onClick={this.handleChangeSort}
+              className="button"
+            >
               Comment Count
             </button>
-            <button value="created_at" onClick={this.handleChangeSort}>
+            <button
+              value="created_at"
+              onClick={this.handleChangeSort}
+              className="button"
+            >
               Date Created
             </button>
-            <button value="votes" onClick={this.handleChangeSort}>
+            <button
+              value="votes"
+              onClick={this.handleChangeSort}
+              className="button"
+            >
               Votes
             </button>
           </ul>
@@ -49,6 +61,7 @@ class Articles extends React.Component {
                     {' | '} Comment Counts: {article.comment_count}
                   </h3>
                   <h3>Added On: {moment(article.created_at).fromNow()}</h3>
+                  <h4>Author: {`${article.author}`}</h4>
                 </Link>
               </div>
 

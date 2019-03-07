@@ -1,5 +1,5 @@
 .articleDataStyle {
-  width: 700px;
+  width: 100%;
   margin: 20px auto;
   display: flex;
   flex-direction: column;
@@ -17,20 +17,15 @@
   margin: 4px 2px;
   cursor: pointer;
 }
-/* .button-area {
-  margin: 10px auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  max-width: 320px;
-} */
+
 #article_body {
   font-size: 1.5em;
+  justify-content: space-evenly;
+  text-align: justify;
 }
 #textboxid {
   height: 100px;
-  width: 500px;
+  width: 100%;
   background-color: rgb(207, 213, 144);
   margin: auto;
   display: block;

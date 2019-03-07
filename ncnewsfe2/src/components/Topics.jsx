@@ -3,16 +3,33 @@ import { getArticlesByTopics } from '../api';
 import moment from 'moment';
 import { Link } from '@reach/router';
 import './Articles.css';
-//import { navigate } from '@reach/router';
+import { navigate } from '@reach/router';
 class ArticlesByTopics extends Component {
   state = {
     articlesData: [],
-    isLoading: true
+    isLoading: true,
+    err: null
   };
   render() {
-    const { articlesData, isLoading } = this.state;
-    if (isLoading) return <h3>Loading...</h3>;
-    return (
+    const { articlesData, isLoading, err } = this.state;
+    // if (isLoading) return <h3>Loading...</h3>;
+    return !err && isLoading ? (
+      <div>
+        <h3>Loading...</h3>
+      </div>
+    ) : err ? (
+      <section className="content-well">
+        <h1 className="title title--noarticles">Oh no!</h1>
+        <h2 className="description description--noarticles">
+          There aren't any articles in this topic yet. <br />
+          Do you want to add one?
+        </h2>
+        <button className="button" onClick={this.handleNavToPost}>
+          Post article
+        </button>
+        <br />
+      </section>
+    ) : (
       <div>
         <p>Total articles count = {`${articlesData.length}`}</p>
 
@@ -67,6 +84,11 @@ class ArticlesByTopics extends Component {
       });
     }
   }
+  handleNavToPost = () => {
+    this.setState({ err: null }, () => {
+      navigate('/post-article');
+    });
+  };
 }
 
 export default ArticlesByTopics;

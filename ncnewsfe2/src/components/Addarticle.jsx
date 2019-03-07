@@ -14,9 +14,7 @@ class AddArticle extends Component {
     const { topics, path } = this.props;
     //console.log(this.props);
     //const topics = this.props.location.state.topics;
-    //console.log(topics);
-    //console.log(this.props);
-    // console.log(this.props.children);
+
     const { title, body, topic } = this.state;
     return (
       <div>

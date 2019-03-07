@@ -5,7 +5,8 @@ import './App.css';
 import Login from './components/Login.jsx';
 import Nav from './components/Nav.jsx';
 import Main from './components/Main.jsx';
-
+import Footer from './components/Footer.jsx';
+import Header from './components/Header.jsx';
 import * as api from './api';
 import { navigate } from '@reach/router';
 
@@ -13,7 +14,7 @@ class App extends Component {
   state = {
     user: {},
     topics: [],
-    isLoading: false,
+    isLoading: true,
     hasError: false
   };
 
@@ -22,7 +23,14 @@ class App extends Component {
     if (isLoading) return <h3>Loading...</h3>;
     return (
       <div className="App">
-        <h1> News App </h1>
+        <Header />
+        {/* {user.username ? (
+          <Header username={user.username} />
+        ) : (
+          <div>
+            <h1> News App</h1>
+          </div>
+        )} */}
 
         <Nav username={user.username} topics={topics} logOut={this.logOut} />
         {hasError ? (
@@ -42,6 +50,7 @@ class App extends Component {
             <Main user={user} topics={topics} goHome={this.goHome} />
           </Login>
         )}
+        <Footer />
       </div>
     );
   }

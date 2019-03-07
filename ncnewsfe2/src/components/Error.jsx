@@ -1,11 +1,11 @@
 import React from 'react';
-//import './Error.css';
+import './Error.css';
 
 const Error = props => {
   const { goHome } = props;
   return (
-    <main className="content-well">
-      <h1 className="title title--404">404</h1>
+    <main className="contentWell">
+      <h2>ERROR- 404 !!!</h2>
       <h2>Something went wrong!</h2>
       <p>Please goto HomePage!!</p>
       <button onClick={goHome} className="button">

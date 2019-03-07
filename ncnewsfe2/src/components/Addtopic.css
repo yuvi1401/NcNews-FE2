@@ -1,16 +1,18 @@
-.commentForm {
+.topicForm {
   display: flex;
   flex-direction: column;
   align-content: center;
   padding: 0 20px 20px 20px;
-  width: 100%;
+  /* width: 100%; */
   max-width: 500px;
   min-width: 300px;
   margin: auto;
 }
 #slug {
   height: 20px;
-  font-size: 18px;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  border: solid 1px aqua;
 }
 #description {
   height: 200px;
@@ -20,16 +22,9 @@
   outline: none;
   border: solid 1px aqua;
   font-size: 14px;
-  width: 500px;
-  max-width: 500px;
+  /* width: 500px;
+  max-width: 500px; */
   min-width: 300px;
   font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
 }
-
-/* #button--submit {
-  width: 100px;
-  margin: 0 auto;
-  color: #4caf50;
-  height: 25px;
-  font-size: 18px;
-} */

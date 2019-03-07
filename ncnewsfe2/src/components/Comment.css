@@ -1,5 +1,5 @@
 .comment {
-  width: 500px;
+  width: 90%;
   margin: 10px auto;
   display: flex;
   flex-direction: column;
@@ -10,12 +10,12 @@
   text-decoration-color: blue;
 }
 
-.comment #body {
+.articleDataStyle.comment#body {
   height: 100px;
-  width: 500px;
+  width: 1rem;
   background-color: rgb(207, 213, 144);
   margin: 10px auto;
   display: block;
   font-size: 15px;
-  background: none;
+  background: aquamarine;
 }

@@ -64,7 +64,7 @@ export const postComment = (article_id, newComment) => {
   return axios
     .post(`${BASE_URL}/articles/${article_id}/comments`, newComment)
     .then(({ data }) => {
-      console.log(data);
+      // console.log(data);
 
       return data.comment;
     });
@@ -88,6 +88,7 @@ export const getArticlesByTopics = topic => {
     .get(`${BASE_URL}/topics/${topic}/articles?limit=100000`)
     .then(({ data }) => {
       // console.log(data);
+      //if (!data.articles) return Promise.reject('No Articles found');
       return data.articles;
     });
 };
