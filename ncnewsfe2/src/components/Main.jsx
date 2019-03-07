@@ -30,7 +30,7 @@ class Main extends React.Component {
           topics={topics}
         />
         <AddTopic path="/post-topic" username={user.username} topics={topics} />
-        <Error default />
+        <Error default goHome={goHome} />
       </Router>
     );
   }
