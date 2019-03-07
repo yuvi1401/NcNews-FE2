@@ -23,15 +23,13 @@ class App extends Component {
     if (isLoading) return <h3>Loading...</h3>;
     return (
       <div className="App">
-        <Header />
-        {/* {user.username ? (
+        {user.username ? (
           <Header username={user.username} />
         ) : (
           <div>
             <h1> News App</h1>
           </div>
-        )} */}
-
+        )}
         <Nav username={user.username} topics={topics} logOut={this.logOut} />
         {hasError ? (
           <h2>
@@ -39,11 +37,6 @@ class App extends Component {
               Can't load articles... Possible Reasons: Incorrect Username/
               Network Error. Try to Login Again.
             </div>
-            {/* <div>
-              <button onClick={this.goHome} className="button">
-                HOME
-              </button>
-            </div> */}
           </h2>
         ) : (
           <Login login={this.setUser} user={user}>

@@ -1,11 +1,11 @@
 import React from 'react';
 import './Header.css';
-const Header = () => {
-  //const { username } = this.props;
+const Header = props => {
+  const { username } = this.props;
   return (
-    <div className="header">
+    <div>
       <h1> News App </h1>
-      {/* <h3>Welcome {`${username}`}</h3> */}
+      <h3>Welcome {`${username}`}</h3>
     </div>
   );
 };

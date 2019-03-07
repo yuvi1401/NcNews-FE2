@@ -8,10 +8,11 @@ class ArticlesByTopics extends Component {
   state = {
     articlesData: [],
     isLoading: true,
-    err: null
+    err: false
   };
   render() {
     const { articlesData, isLoading, err } = this.state;
+    //const {topic} = this.props;
     // if (isLoading) return <h3>Loading...</h3>;
     return !err && isLoading ? (
       <div>
@@ -61,31 +62,35 @@ class ArticlesByTopics extends Component {
     );
   }
   componentDidMount() {
-    const { topic } = this.props;
+    //const { topic } = this.props;
     //console.log(topic);
-    getArticlesByTopics(topic).then(articles => {
-      this.setState({
-        articlesData: articles,
-        isLoading: false
-      });
-      //console.log(this.state.articlesData);
-    });
+    this.fetchArticlesByTopics(this.props.topic);
   }
   componentDidUpdate(prevProps) {
     // console.log(prevProps);
     // console.log(this.props.topic);
     if (this.props.topic !== prevProps.topic) {
-      getArticlesByTopics(this.props.topic).then(articles => {
-        this.setState({
-          articlesData: articles,
-          isLoading: false
-        });
-        //console.log(this.state.articlesData);
-      });
+      this.fetchArticlesByTopics(this.props.topic);
     }
   }
+
+  fetchArticlesByTopics = topic => {
+    getArticlesByTopics(topic)
+      .then(articles => {
+        this.setState({
+          articlesData: articles,
+          isLoading: false,
+          err: false
+        });
+        //console.log(this.state.articlesData);
+      })
+      .catch(err => {
+        this.setState({ err: true });
+      });
+  };
+
   handleNavToPost = () => {
-    this.setState({ err: null }, () => {
+    this.setState({ err: false }, () => {
       navigate('/post-article');
     });
   };
