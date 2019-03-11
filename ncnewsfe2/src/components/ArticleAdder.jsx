@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { navigate } from '@reach/router';
 import { postArticle } from '../api';
-import Nav from './Nav.jsx';
-import './Addarticle.css';
+//import Nav from './Nav.jsx';
+import './ArticleAdder.css';
 
 class AddArticle extends Component {
   state = {
@@ -12,13 +12,11 @@ class AddArticle extends Component {
   };
   render() {
     const { topics, path } = this.props;
-    //console.log(this.props);
-    //const topics = this.props.location.state.topics;
 
     const { title, body, topic } = this.state;
     return (
       <div>
-        {path === '/post-article' ? (
+        {path === '/post-article/new' ? (
           <h1>Post an Article</h1>
         ) : (
           <h1>Post an Article in new topic</h1>

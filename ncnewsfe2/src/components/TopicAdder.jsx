@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { navigate } from '@reach/router';
 import { postTopic } from '../api';
-//import AddArticle from './Addarticle.jsx';
-import './Addtopic.css';
+
+import './TopicAdder.css';
 
 class AddTopic extends Component {
   state = {
@@ -12,8 +12,6 @@ class AddTopic extends Component {
     description: ''
   };
   render() {
-    // const { topics, username } = this.props;
-    //console.log(this.props);
     const { slug, description } = this.state;
     return (
       <section>
@@ -44,7 +42,6 @@ class AddTopic extends Component {
     );
   }
   handleChange = event => {
-    //console.log(event);
     const { id } = event.target;
     const value =
       id === 'slug' ? event.target.value.toLowerCase() : event.target.value;
@@ -56,7 +53,6 @@ class AddTopic extends Component {
     event.preventDefault();
     const { slug, description } = this.state;
     postTopic(slug, description).then(topic => {
-      // console.log(topic);
       navigate(`/topics/${topic.slug}/articles`);
     });
   };

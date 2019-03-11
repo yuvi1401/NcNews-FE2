@@ -7,8 +7,6 @@ class Nav extends Component {
   render() {
     const { topics, username, logOut } = this.props;
 
-    //console.log('topics?', topics);
-    //console.log(this.props);
     return (
       <div className="topNav">
         {username ? (
@@ -22,7 +20,7 @@ class Nav extends Component {
             </button>
 
             <span className="dropdown">
-              <button className="dropbtn">
+              <button className="dropbtn" id="button-drop">
                 Topics
                 <span className="dropdown-content">
                   {topics.map(topic => {
@@ -39,14 +37,14 @@ class Nav extends Component {
             </span>
 
             <button className="buttonNav">
-              <Link to="/post-topic">Add Topic</Link>
+              <Link to="/post-topic/new">Add Topic</Link>
             </button>
 
             <button className="buttonNav">
-              <Link to="/post-article">Add Article</Link>
+              <Link to="/post-article/new">Add Article</Link>
             </button>
 
-            <button onClick={logOut} className="buttonNav">
+            <button onClick={logOut} className="buttonNav" id="button-logout">
               Log Out
             </button>
           </nav>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-//import { Link, Router } from '@reach/router';
 import moment from 'moment';
 import { getCommnetsForArticleId, postComment, deleteComment } from '../api';
 import './Comment.css';
@@ -15,7 +14,7 @@ class Comments extends Component {
   render() {
     const { username } = this.props;
     const { articleId } = this.props;
-    //console.log(username);
+
     const { comments, body } = this.state;
     return (
       <div>
@@ -28,7 +27,6 @@ class Comments extends Component {
             onChange={this.handleChange}
             placeholder="COMMENT"
             className="textarea"
-            // maxlength={200}
             required
           />
           <div>
@@ -75,7 +73,6 @@ class Comments extends Component {
         comments: comments,
         isLoading: true
       });
-      //console.log(this.state.articlesData);
     });
   }
   handleChange = event => {
@@ -87,25 +84,17 @@ class Comments extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { body } = this.state;
-    //console.log(body);
+
     const { username, articleId } = this.props;
 
-    // console.log(this.props);
-    // //console.log(this.props.children);
     postComment(articleId, { username, body }).then(comment => {
-      //   console.log(comment);
       comment.author = comment.username;
       this.setState({ comments: [comment, ...this.state.comments] });
-      // this.setState({ body: '' }, () => {
-      //   getCommnetsForArticleId(articleId);
-      // });
     });
   };
   handleDelete = commentId => {
-    //const { articles, fetchComments } = this.props;
     const { articleId } = this.props;
-    // console.log(commentId);
-    // console.log(articleId);
+
     deleteComment(articleId, commentId)
       .then(() => {
         return getCommnetsForArticleId(articleId);

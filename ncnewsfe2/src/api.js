@@ -9,11 +9,9 @@ export const getArticlesData = () => {
 };
 export const getArticleData = id => {
   return axios.get(`${BASE_URL}/articles/${id}`).then(({ data }) => {
-    console.log(data.article);
+    //console.log(data.article);
     return data.article;
   });
-  // export const getArticleBySort = value =>{
-  //   return axios.get()
 };
 export const getSortedArticles = criteria => {
   return axios

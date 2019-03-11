@@ -46,8 +46,6 @@ class Articles extends React.Component {
         <div className="articlesStyle">
           {articlesData.map(article => {
             return (
-              //   <React.Fragment key={article.article_id}>
-
               <div key={article.article_id} className="articleStyle">
                 <Link
                   to={`${article.article_id}`}
@@ -64,8 +62,6 @@ class Articles extends React.Component {
                   <h4>Author: {`${article.author}`}</h4>
                 </Link>
               </div>
-
-              //   </React.Fragment>
             );
           })}
         </div>
@@ -79,14 +75,11 @@ class Articles extends React.Component {
           articlesData: articles,
           isLoading: false
         });
-        //console.log(this.state.articlesData);
       })
       .catch(err => navigate('/404', { replace: true }));
   }
 
   handleChangeSort = event => {
-    //console.log(event);
-
     const { value } = event.target;
     getSortedArticles(value).then(articles => {
       this.setState({

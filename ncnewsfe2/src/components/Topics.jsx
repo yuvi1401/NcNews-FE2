@@ -12,8 +12,7 @@ class ArticlesByTopics extends Component {
   };
   render() {
     const { articlesData, isLoading, err } = this.state;
-    //const {topic} = this.props;
-    // if (isLoading) return <h3>Loading...</h3>;
+
     return !err && isLoading ? (
       <div>
         <h3>Loading...</h3>
@@ -37,11 +36,7 @@ class ArticlesByTopics extends Component {
         <div className="articlesStyle">
           {articlesData.map(article => {
             return (
-              <div
-                key={article.article_id}
-                className="articleStyle"
-                // style={{ backgroundColor: 'steelblue' }}
-              >
+              <div key={article.article_id} className="articleStyle">
                 <Link
                   to={`/articles/${article.article_id}`}
                   style={{ textDecoration: 'none', color: '#080BB4' }}

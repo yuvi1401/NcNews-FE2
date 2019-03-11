@@ -16,8 +16,8 @@ class Votes extends Component {
         >
           Vote Up
         </button>
-        {/* <p>Votes: {parseInt(`${article.votes + voteChange}`)}</p> */}
-        <p>Votes: {parseInt(`${this.props.articleVotes + voteChange}`)}</p>
+
+        <p>Votes: {`${this.props.articleVotes + voteChange}`}</p>
         <button
           className="button"
           onClick={() => this.handleVoteChange(-1)}
@@ -31,9 +31,7 @@ class Votes extends Component {
   handleVoteChange = voteNum => {
     const { articleId } = this.props;
 
-    //console.log(this.props);
     changeVoteOnArticle(articleId, voteNum).then(data => {
-      //console.log(data);
       this.setState(state => {
         return { voteChange: state.voteChange + voteNum };
       });
