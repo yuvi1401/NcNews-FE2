@@ -1,13 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Carter+One|charm|Pacifico');
 .container {
   max-width: 700px;
   height: 250px;
   margin: auto;
   justify-content: center;
   align-content: center;
-  background-color: #00ffdec2;
+  /* background-color: #00ffdec2; */
+  /* background-image: url('https://www.nasaspaceflight.com/wp-content/uploads/2018/08/docked.jpg');
+  background-repeat: no-repeat;
+  background-size: cover; */
 }
 .grid-row {
   padding: auto;
   align-content: center;
   height: 100%;
+}
+#homePara {
+  font-family: 'Charm', cursive;
+}
+#homeHeading {
+  font-family: 'Carter One', cursive;
 }

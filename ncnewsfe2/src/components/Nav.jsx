@@ -5,19 +5,21 @@ import './Nav.css';
 
 class Nav extends Component {
   render() {
-    //const { topics, isLoading } = this.state;
     const { topics, username, logOut } = this.props;
-    //if (isLoading) return <h3>Loading...</h3>;
+
     //console.log('topics?', topics);
     //console.log(this.props);
     return (
       <div className="topNav">
         {username ? (
           <nav className="link">
-            <Link to="/">Home</Link>
-            {'  |  '}
-            <Link to="/articles">Articles</Link>
-            {'  |  '}
+            <button className="buttonNav">
+              <Link to="/">Home</Link>
+            </button>
+
+            <button className="buttonNav">
+              <Link to="/articles">Articles</Link>
+            </button>
 
             <span className="dropdown">
               <button className="dropbtn">
@@ -35,12 +37,16 @@ class Nav extends Component {
                 </span>
               </button>
             </span>
-            {'  |  '}
-            <Link to="/post-topic">Add Topic</Link>
-            {'  |  '}
-            <Link to="/post-article">Add Article</Link>
-            {'  |  '}
-            <button onClick={logOut} className="button-logout">
+
+            <button className="buttonNav">
+              <Link to="/post-topic">Add Topic</Link>
+            </button>
+
+            <button className="buttonNav">
+              <Link to="/post-article">Add Article</Link>
+            </button>
+
+            <button onClick={logOut} className="buttonNav">
               Log Out
             </button>
           </nav>
