@@ -8,12 +8,13 @@ class AddArticle extends Component {
   state = {
     title: '',
     body: '',
-    topic: ''
+    topic: '',
+    hasError: false
   };
   render() {
     const { topics, path } = this.props;
 
-    const { title, body, topic } = this.state;
+    const { title, body, topic, hasError } = this.state;
     return (
       <div>
         {path === '/post-article/new' ? (
@@ -38,7 +39,12 @@ class AddArticle extends Component {
             required
             placeholder="ArticleBody"
           />
-          <select id="topic" value={topic} onChange={this.handleChange}>
+          <select
+            id="topic"
+            value={topic}
+            onChange={this.handleChange}
+            required
+          >
             <option defaultselected="true">Select a Topic</option>
             {topics.map(topic => {
               return (
@@ -48,6 +54,11 @@ class AddArticle extends Component {
               );
             })}
           </select>
+          {hasError && (
+            <h4 style={{ textDecoration: 'none', color: 'red' }}>
+              This is required!
+            </h4>
+          )}
           <button type="submit" id="button">
             Post
           </button>
@@ -66,9 +77,15 @@ class AddArticle extends Component {
     event.preventDefault();
     const { username } = this.props;
     const { title, body, topic } = this.state;
-    postArticle(topic, { title, body, username }).then(article => {
-      navigate(`/articles/${article.article_id}`);
-    });
+    postArticle(topic, { title, body, username })
+      .then(article => {
+        navigate(`/articles/${article.article_id}`);
+      })
+      .catch(err =>
+        this.setState({
+          hasError: true
+        })
+      );
   };
 }
 export default AddArticle;
