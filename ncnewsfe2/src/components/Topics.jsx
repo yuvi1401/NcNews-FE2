@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { getArticlesByTopics } from '../api';
-import moment from 'moment';
-import { Link } from '@reach/router';
+
 import './Articles.css';
 import { navigate } from '@reach/router';
+import ArticlesMap from './ArticlesMapping.jsx';
+
 class ArticlesByTopics extends Component {
   state = {
     articlesData: [],
@@ -32,38 +33,14 @@ class ArticlesByTopics extends Component {
     ) : (
       <div>
         <p>Total articles count = {`${articlesData.length}`}</p>
-
-        <div className="articlesStyle">
-          {articlesData.map(article => {
-            return (
-              <div key={article.article_id} className="articleStyle">
-                <Link
-                  to={`/articles/${article.article_id}`}
-                  style={{ textDecoration: 'none', color: '#080BB4' }}
-                >
-                  <h1>{article.title}</h1>
-
-                  <h3>
-                    Votes:{article.votes} {'  |  '} Topic: {article.topic}{' '}
-                    {' | '} Comment Counts: {article.comment_count}
-                  </h3>
-                  <h3>Added On: {moment(article.created_at).fromNow()}</h3>
-                </Link>
-              </div>
-            );
-          })}
-        </div>
+        <ArticlesMap articlesData={this.state.articlesData} />
       </div>
     );
   }
   componentDidMount() {
-    //const { topic } = this.props;
-    //console.log(topic);
     this.fetchArticlesByTopics(this.props.topic);
   }
   componentDidUpdate(prevProps) {
-    // console.log(prevProps);
-    // console.log(this.props.topic);
     if (this.props.topic !== prevProps.topic) {
       this.fetchArticlesByTopics(this.props.topic);
     }
@@ -77,7 +54,6 @@ class ArticlesByTopics extends Component {
           isLoading: false,
           err: false
         });
-        //console.log(this.state.articlesData);
       })
       .catch(err => {
         this.setState({ err: true });
@@ -86,7 +62,7 @@ class ArticlesByTopics extends Component {
 
   handleNavToPost = () => {
     this.setState({ err: false }, () => {
-      navigate('/post-article');
+      navigate('/post-article/new');
     });
   };
 }

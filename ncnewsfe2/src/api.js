@@ -17,7 +17,7 @@ export const getSortedArticles = criteria => {
   return axios
     .get(`${BASE_URL}/articles?limit=100000&sort_by=${criteria}`)
     .then(({ data }) => {
-      // console.log(data);
+      //console.log(data);
       return data.articles;
     });
 };
