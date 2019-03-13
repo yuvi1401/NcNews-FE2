@@ -7,12 +7,14 @@ import './TopicAdder.css';
 class AddTopic extends Component {
   state = {
     topic: {},
-
     slug: '',
-    description: ''
+    description: '',
+    hasError: false
   };
   render() {
-    const { slug, description } = this.state;
+    const { slug, description, hasError } = this.state;
+
+    //console.log(topics);
     return (
       <section>
         <h1> Create a Topic</h1>
@@ -25,6 +27,7 @@ class AddTopic extends Component {
             required
             placeholder="Enter Topic Name"
           />
+
           <textarea
             type="text"
             id="description"
@@ -34,6 +37,11 @@ class AddTopic extends Component {
             required
             className="textArea"
           />
+          {hasError && (
+            <h3 style={{ color: 'red' }}>
+              This topic already exist. Please add new Topic
+            </h3>
+          )}
           <button type="submit" id="button">
             POST
           </button>
@@ -43,6 +51,7 @@ class AddTopic extends Component {
   }
   handleChange = event => {
     const { id } = event.target;
+
     const value =
       id === 'slug' ? event.target.value.toLowerCase() : event.target.value;
     this.setState({
@@ -52,9 +61,15 @@ class AddTopic extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { slug, description } = this.state;
-    postTopic(slug, description).then(topic => {
-      navigate(`/topics/${topic.slug}/articles`);
-    });
+    postTopic(slug, description)
+      .then(topic => {
+        navigate(`/topics/${topic.slug}/articles`);
+      })
+      .catch(err =>
+        this.setState({
+          hasError: true
+        })
+      );
   };
 }
 export default AddTopic;

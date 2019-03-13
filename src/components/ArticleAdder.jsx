@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { navigate } from '@reach/router';
 import { postArticle } from '../api';
+//import { navigate } from '@reach/router';
 //import Nav from './Nav.jsx';
 import './ArticleAdder.css';
 
@@ -12,8 +13,8 @@ class AddArticle extends Component {
     hasError: false
   };
   render() {
-    const { topics, path } = this.props;
-
+    const { navigate, topics, path } = this.props;
+    console.log(this.props);
     const { title, body, topic, hasError } = this.state;
     return (
       <div>
@@ -54,11 +55,7 @@ class AddArticle extends Component {
               );
             })}
           </select>
-          {hasError && (
-            <h4 style={{ textDecoration: 'none', color: 'red' }}>
-              This is required!
-            </h4>
-          )}
+          {hasError && <h4 style={{ color: 'red' }}>This is required!</h4>}
           <button type="submit" id="button">
             Post
           </button>
