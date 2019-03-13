@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { getArticlesByTopics } from '../api';
 
 import './Articles.css';
-import { navigate } from '@reach/router';
+
 import ArticlesMap from './ArticlesMapping.jsx';
 
 class ArticlesByTopics extends Component {
@@ -56,15 +56,12 @@ class ArticlesByTopics extends Component {
         });
       })
       .catch(err => {
-        //console.log(err);
         this.setState({ err: true });
       });
   };
 
   handleNavToPost = () => {
     this.setState({ err: false }, () => {
-      // console.log(this.props.topic);
-      // console.log(this.props.navigate);
       this.props.navigate('/post-article/new', {
         state: { topic: this.props.topic }
       });

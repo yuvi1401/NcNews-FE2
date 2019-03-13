@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { navigate } from '@reach/router';
 import { postArticle } from '../api';
-//import { navigate } from '@reach/router';
-//import Nav from './Nav.jsx';
+
 import './ArticleAdder.css';
 
 class AddArticle extends Component {
@@ -15,7 +14,6 @@ class AddArticle extends Component {
   render() {
     const { topics, path } = this.props;
 
-    console.log(this.props);
     const { title, body, topic, hasError } = this.state;
     return (
       <div>
@@ -86,7 +84,6 @@ class AddArticle extends Component {
       );
   };
   componentDidMount = () => {
-    console.log(this.props.location.state.topic);
     if (this.props.location.state.topic) {
       this.setState({ topic: this.props.location.state.topic });
     }

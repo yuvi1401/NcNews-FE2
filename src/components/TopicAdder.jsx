@@ -14,7 +14,6 @@ class AddTopic extends Component {
   render() {
     const { slug, description, hasError } = this.state;
 
-    //console.log(topics);
     return (
       <section>
         <h1> Create a Topic</h1>
@@ -59,10 +58,12 @@ class AddTopic extends Component {
     });
   };
   handleSubmit = event => {
+    const { fetchTopics } = this.props;
     event.preventDefault();
     const { slug, description } = this.state;
     postTopic(slug, description)
       .then(topic => {
+        fetchTopics();
         navigate(`/topics/${topic.slug}/articles`);
       })
       .catch(err =>

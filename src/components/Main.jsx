@@ -15,7 +15,7 @@ class Main extends React.Component {
     localStorage.setItem('user', JSON.stringify(user));
   }
   render() {
-    const { user, topics, goHome } = this.props;
+    const { user, topics, goHome, fetchTopics } = this.props;
 
     return (
       <Router className="main">
@@ -32,6 +32,7 @@ class Main extends React.Component {
           path="/post-topic/new"
           username={user.username}
           topics={topics}
+          fetchTopics={fetchTopics}
         />
         <Error default goHome={goHome} />
       </Router>

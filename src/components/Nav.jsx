@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
-
+import * as api from '../api';
 import './Nav.css';
 
 class Nav extends Component {
   render() {
     const { topics, username, logOut } = this.props;
 
+    console.log(this.state);
     return (
       <div className="topNav">
         {username ? (

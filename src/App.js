@@ -20,6 +20,8 @@ class App extends Component {
 
   render() {
     const { user, topics, isLoading, hasError } = this.state;
+    console.log(this.state.topics);
+    console.log(this.props.children);
     if (isLoading) return <h3>Loading...</h3>;
     return (
       <div className="App">
@@ -40,7 +42,12 @@ class App extends Component {
           </h2>
         ) : (
           <Login login={this.setUser} user={user}>
-            <Main user={user} topics={topics} goHome={this.goHome} />
+            <Main
+              user={user}
+              topics={topics}
+              goHome={this.goHome}
+              fetchTopics={this.fetchTopics}
+            />
           </Login>
         )}
 
@@ -76,15 +83,18 @@ class App extends Component {
     if (user && !user.username) {
       this.setState({ user: JSON.parse(localStorage.getItem('user')) });
     }
+    this.fetchTopics();
+  }
+  goHome = () => {
+    navigate('/');
+  };
+  fetchTopics = () => {
     api.getTopics().then(topics => {
       this.setState({
         topics: topics,
         isLoading: false
       });
     });
-  }
-  goHome = () => {
-    navigate('/');
   };
 }
 
