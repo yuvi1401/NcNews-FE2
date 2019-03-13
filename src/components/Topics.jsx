@@ -22,7 +22,7 @@ class ArticlesByTopics extends Component {
       <section className="content-well">
         <h1 className="title title--noarticles">Oh no!</h1>
         <h2 className="description description--noarticles">
-          There aren't any articles in this {this.props.topic} topic yet. <br />
+          There aren't any articles in {this.props.topic} topic yet. <br />
           Do you want to add one?
         </h2>
         <button className="button" onClick={this.handleNavToPost}>
@@ -63,9 +63,11 @@ class ArticlesByTopics extends Component {
 
   handleNavToPost = () => {
     this.setState({ err: false }, () => {
-      console.log(this.props.topic);
-      //console.log(this.props.navigate);
-      this.props.navigate('/post-article/new', { topic: this.props.topic });
+      // console.log(this.props.topic);
+      // console.log(this.props.navigate);
+      this.props.navigate('/post-article/new', {
+        state: { topic: this.props.topic }
+      });
     });
   };
 }

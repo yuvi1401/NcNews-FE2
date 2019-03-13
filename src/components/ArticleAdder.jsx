@@ -13,7 +13,8 @@ class AddArticle extends Component {
     hasError: false
   };
   render() {
-    const { navigate, topics, path } = this.props;
+    const { topics, path } = this.props;
+
     console.log(this.props);
     const { title, body, topic, hasError } = this.state;
     return (
@@ -83,6 +84,12 @@ class AddArticle extends Component {
           hasError: true
         })
       );
+  };
+  componentDidMount = () => {
+    console.log(this.props.location.state.topic);
+    if (this.props.location.state.topic) {
+      this.setState({ topic: this.props.location.state.topic });
+    }
   };
 }
 export default AddArticle;
