@@ -20,8 +20,8 @@ class App extends Component {
 
   render() {
     const { user, topics, isLoading, hasError } = this.state;
-    console.log(this.state.topics);
-    console.log(this.props.children);
+    // console.log(this.state.topics);
+    // console.log(this.props.children);
     if (isLoading) return <h3>Loading...</h3>;
     return (
       <div className="App">

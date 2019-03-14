@@ -10,7 +10,7 @@ const ArticlesMap = props => {
         return (
           <div key={article.article_id} className="articleStyle">
             <Link
-              to={`${article.article_id}`}
+              to={`/articles/${article.article_id}`}
               id="linkStyle"
               style={{ textDecoration: 'none', color: '#080BB4' }}
             >
