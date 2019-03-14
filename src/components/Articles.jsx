@@ -15,7 +15,7 @@ class Articles extends React.Component {
     const { articlesData, isLoading } = this.state;
     if (isLoading) return <h3>Loading...</h3>;
     return (
-      <React.Fragment>
+      <div>
         <div>
           <h3>Sort Articles by</h3>
           <ArticlesSorted handleChangeSort={this.handleChangeSort} />
@@ -25,7 +25,7 @@ class Articles extends React.Component {
         <div>
           <ArticlesMap articlesData={this.state.articlesData} />
         </div>
-      </React.Fragment>
+      </div>
     );
   }
   componentDidMount() {
