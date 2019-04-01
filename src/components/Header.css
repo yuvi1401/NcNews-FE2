@@ -5,6 +5,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: black;
+  color: navy;
   background-image: url(https://raw.githubusercontent.com/hayanisaid/bootstrap4-website/master/images/headerback.jpg);
 }

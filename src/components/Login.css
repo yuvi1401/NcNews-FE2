@@ -1,6 +1,6 @@
 .login-form {
-  width: 350px;
-
+  width: 304px;
+  /* min-width: 304px; */
   margin: 30px auto;
   display: flex;
   flex-direction: column;
@@ -29,4 +29,10 @@
   cursor: pointer;
   width: 150px;
   align-self: auto;
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px #888888;
+  overflow: hidden;
+}
+.login-form:hover #button {
+  background-color: #006400;
 }

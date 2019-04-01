@@ -19,8 +19,8 @@ class Article extends Component {
 
     return (
       <div className="articleDataStyle">
-        <h1>{article.title}</h1>
-        <h2>
+        <h1 id="articleTitle">{article.title}</h1>
+        <h2 id="articleInfo">
           Topic : {article.topic} {'  |  '} Author: {article.author} |{' '}
           {username === article.author && (
             <button
